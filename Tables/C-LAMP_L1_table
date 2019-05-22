@@ -1,0 +1,1508 @@
+! Table for C-LAMP Experiment 1 Monthly Mean model output
+cmor_version: 1.1         ! version of CMOR that can read this table
+cf_version:   1.0         ! version of CF that output conforms to
+project_id:   Carbon-Land Model Intercomparison Project (C-LAMP) ! project id
+table_id:     Table C-LAMP_L1    ! table id
+table_date:   1 August 2007      ! date this table was constructed
+
+expt_id_ok:   'Experiment 1.1 (Spin-up)' ! Not for publication
+expt_id_ok:   'Experiment 1.2 (Control)'          ! official name(s) of
+expt_id_ok:   'Experiment 1.3 (Varying Climate)'  ! project's experiments
+expt_id_ok:   'Experiment 1.4 (Varying Climate, CO2, and N Deposition)'
+expt_id_ok:   'Experiment 1.5 (Varying Climate, CO2, N Deposition, and Land Cover)'
+expt_id_ok:   'Experiment 2.1 (Spin-up)' ! Not for publication
+expt_id_ok:   'Experiment 2.2 (Control)'          ! official name(s) of
+expt_id_ok:   'Experiment 2.3 (Varying Climate)'  ! project's experiments
+expt_id_ok:   'Experiment 2.4 (Varying Climate, CO2, and N Deposition)'
+expt_id_ok:   'Experiment 2.5 (Varying Climate, CO2, N Deposition, and Land Cover)'
+
+magic_number: -1          ! used to check whether this file has been
+                          !   altered from the official version.
+                          !   should be set to number of non-blank
+                          !   characters in file.
+approx_interval:  30.     ! approximate spacing between successive time
+                          !   samples (in units of the output time
+                          !   coordinate), but this is ignored if set to 0.
+missing_value: 1.e+36     ! value used to indicate a missing value
+                          !   in arrays output by netCDF as 32-bit IEEE
+                          !   floating-point numbers (float or real)
+
+!*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+!
+! SUBROUTINE ARGUMENT DEFAULT INFORMATION
+!
+!*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+!
+!  set default specifications for subroutine arguments to:
+!     required/indeterminate/optional/ignored/forbidden
+!    (indeterminate may or may not be required information, but is not always
+!     required as an argument of the function call)
+!
+!
+!============
+subroutine_entry: cmor_axis
+!============
+!
+required: table axis_name units length coord_vals cell_bounds
+ignored: interval
+!
+!============
+subroutine_entry: cmor_variable
+!============
+!
+required: table table_entry units axis_ids
+indeterminate: missing_value
+optional: tolerance original_name history comment
+ignored: positive
+!
+!============
+subroutine_entry: cmor_write
+!============
+!
+required:  var_id data
+indeterminate: ntimes_passed time_vals time_bnds store_with
+optional: file_suffix
+!
+!
+!*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+!
+! AXIS INFORMATION
+!
+!*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+!
+! ??? what about climatology???
+! ??? what about model level data???
+!
+!
+!  TEMPLATE FOR AXES
+!
+!============
+!axis_entry:               ! (required)
+!============
+!
+!    Override default argument specifications for cmor_axis
+!------------
+!    acceptable arguments include units length coord_vals cell_bounds interval
+!required:                  ! (default: table axis_name units length
+!                                        coord_vals cell_bounds)
+!indeterminate:
+!optional:
+!ignored:                   ! (default: interval)
+!forbidden:
+!------------
+!
+! Axis attributes:
+!----------------------------------
+!standard_name:             ! (required)
+!units:                     ! (required)
+!axis:                      ! X, Y, Z, T (default: undeclared)
+!positive:                  ! up or down (default: undeclared)
+!long_name:                 ! (default: undeclared)
+!----------------------------------
+!
+! Additional axis information:
+!----------------------------------
+!out_name:                ! (default: same as axis_entry)
+!type:                    ! double (default), real, character, integer
+!stored_direction:        ! increasing (default) or decreasing
+!valid_min:               ! type: double precision (default: no check performed
+!valid_max:               ! type: double precision (default: no check performed
+!requested:               ! space-separated list of requested coordinates
+                          !       (default: undeclared)
+!bounds_requested:        ! space-separated list of requested coordinate bounds
+                          !       (default: undeclared)
+!tol_on_requests:         ! fractional tolerance for meeting request
+                          !  (default=1.e-3, which is used in the formula:
+                          !     eps =  MIN(( tol*interval between grid-points)
+                          !          and (1.e-3*tol*coordinate value)))
+!value:                   ! of scalar (singleton) dimension
+!bounds_values:           ! of scalar (singleton) dimension bounds
+!----------------------------------
+!
+!
+!  TEMPLATE FOR VARIABLES
+!
+!
+!============
+!variable_entry:                ! (required)
+!============
+!
+!    Override default argument specifications for cmor_variable
+!------------
+!        acceptable arguments include  file_suffix missing_value tolerance
+!                               original_name history comment positive
+!required:                   ! (default: table table_entry units axis_ids)
+!indeterminate:              ! (default: file_suffix missing_value)
+!optional:                   ! (default: original_name history comment)
+!ignored:                    ! (default: positive)
+!forbidden:
+!------------
+!
+! Variable attributes:
+!----------------------------------
+!standard_name:              ! (required)
+!units:                      ! (required)
+!cell_methods:               ! (default: undeclared)
+!long_name:                  ! (default: undeclared)
+!comment:                    ! (default: undeclared)
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+!dimensions:                 ! (required)  (scalar dimension(s) should appear
+                             !      last in list)
+!out_name:                   ! (default: variable_entry)
+!type:                       ! real (default), double, integer
+!positive:                   ! up or down (default: undeclared)
+!valid_min:                  ! type: real (default: no check performed)
+!valid_max:                  ! type: real (default: no check performed)
+!ok_min_mean_abs:            ! type: real (default: no check performed)
+!ok_max_mean_abs:            ! type: real (default: no check performed)
+!----------------------------------
+!
+
+!
+!============
+axis_entry: longitude
+!============
+!
+!    Override default argument specifications for cmor_axis
+!------------
+optional: cell_bounds
+!------------
+!
+! Axis attributes:
+!----------------------------------
+standard_name:    longitude
+units:            degrees_east
+axis:             X
+long_name:        longitude
+!----------------------------------
+!
+! Additional axis information:
+!----------------------------------
+out_name:         lon
+valid_min:        0.           ! CMOR will add n*360 to input values
+                               ! (where n is an integer) to ensure
+                               !  longitudes are in proper range.  The
+                               !  data will also be rearranged
+                               !  appropriately.
+valid_max:        360.         !  see above comment.
+!----------------------------------
+!
+!
+!=============
+axis_entry: latitude
+!=============
+!
+!    Override default argument specifications for cmor_axis
+!------------
+optional: cell_bounds
+!------------
+!
+! Axis attributes:
+!----------------------------------
+standard_name:    latitude
+units:            degrees_north
+axis:             Y
+long_name:        latitude
+!----------------------------------
+!
+! Additional axis information:
+!----------------------------------
+out_name:         lat
+valid_min:        -90.
+valid_max:        90.
+!----------------------------------
+!
+!
+
+! ??? What about climatological data???
+!
+
+!============
+axis_entry: time
+!============
+!
+!    Override default argument specifications for cmor_axis
+!------------
+optional: interval length
+indeterminate: coord_vals cell_bounds
+!------------
+!
+! Axis attributes:
+!----------------------------------
+standard_name:    time
+units:            days since ?
+axis:             T
+long_name:        time
+!----------------------------------
+!
+!
+!============
+axis_entry: pressure
+!============
+!
+!    Override default argument specifications for cmor_axis
+!------------
+ignored: cell_bounds
+!------------
+!
+! Axis attributes:
+!----------------------------------
+standard_name:    air_pressure
+units:            Pa
+axis:             Z
+positive:         down
+long_name:        pressure
+!----------------------------------
+!
+! Additional axis information:
+!----------------------------------
+out_name:         plev
+stored_direction: decreasing
+valid_min:        0.
+valid_max:        110000.
+requested:        100000. 92500. 85000. 70000. 60000. 50000. 40000.
+requested:         30000. 25000. 20000. 15000. 10000.  7000.  5000.
+requested:          3000.  2000.  1000.
+!----------------------------------
+!
+!
+!============
+axis_entry: height1
+!============
+!
+!    Override default argument specifications for cmor_axis
+!------------
+ignored: cell_bounds
+!------------
+!
+! Axis attributes:
+!----------------------------------
+standard_name:    height
+units:            m
+axis:             Z
+positive:         up
+long_name:        height
+!----------------------------------
+!
+! Additional axis information:
+!----------------------------------
+out_name:         height
+valid_min:        0.
+valid_max:        30.
+value:            10.
+!----------------------------------
+!
+!
+!============
+axis_entry: height2
+!============
+!
+!    Override default argument specifications for cmor_axis
+!------------
+ignored: cell_bounds
+!------------
+!
+! Axis attributes:
+!----------------------------------
+standard_name:    height
+units:            m
+axis:             Z
+positive:         up
+long_name:        height
+!----------------------------------
+!
+! Additional axis information:
+!----------------------------------
+out_name:         height
+valid_min:        2.
+valid_max:        2.
+value:            2.
+!----------------------------------
+!
+!
+!============
+axis_entry: depth1
+!============
+!
+!------------
+!
+! Axis attributes:
+!----------------------------------
+standard_name:    depth
+units:            m
+axis:             Z
+positive:         down
+long_name:        depth
+!----------------------------------
+!
+! Additional axis information:
+!----------------------------------
+out_name:         depth
+valid_min:        0.0
+valid_max:        3.0
+requested:        0.007100635 0.027925 0.06225858 0.1188651 0.2121934
+requested:        0.3660658 0.6197585 1.038027 1.727635 2.864607
+!----------------------------------
+!
+!
+!
+!============
+axis_entry:  standard_hybrid_sigma
+!============
+!
+!    Override default argument specifications for cmor_axis
+!------------
+optional: units
+!------------
+!
+! Axis attributes:
+!----------------------------------
+standard_name:    atmosphere_hybrid_sigma_pressure_coordinate
+units:            1
+axis:             Z
+positive:         down
+long_name:        hybrid sigma pressure coordinate
+!----------------------------------
+!
+! Additional axis information:
+!----------------------------------
+out_name:         lev
+stored_direction: decreasing
+valid_min:        0.0
+valid_max:        1.0
+formula:          p(n,k,j,i) = a(k)*p0 + b(k)*ps(n,j,i)
+z_factors:        p0: p0 a: a b: b ps: ps
+z_bounds_factors: p0: p0 a: a_bnds b: b_bnds ps: ps
+!----------------------------------
+!
+!
+!
+!*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+!
+! VARIABLE INFORMATION
+!
+!*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+!
+!
+!
+! ***************************************************************
+!
+! Vertical dimensionless coordinate variables:
+!
+! ***************************************************************
+!
+!
+!
+!============
+variable_entry: p0
+!============
+!
+!    Override default argument specifications for cmor_variable
+!------------
+ignored: axis_ids
+!------------
+!
+! Variable attributes:
+!----------------------------------
+long_name:       reference pressure for hybrid sigma coordinate
+units:           Pa
+!----------------------------------
+!
+!
+!============
+variable_entry: ptop
+!============
+!
+!    Override default argument specifications for cmor_variable
+!------------
+ignored: axis_ids
+!------------
+!
+! Variable attributes:
+!----------------------------------
+long_name:       pressure at top of model
+units:           Pa
+!----------------------------------
+!
+!
+!============
+variable_entry: sigma
+!============
+!
+!    Override default argument specifications for cmor_variable
+!------------
+optional: units
+!------------
+!
+! Variable attributes:
+!----------------------------------
+long_name:  sigma coordinate
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+dimensions:         zlevel
+type:               double
+!----------------------------------
+!
+!
+!============
+variable_entry: sigma_bnds
+!============
+!IPCC_table_A1
+!    Override default argument specifications for cmor_variable
+!------------
+optional: units
+!------------
+!
+! Variable attributes:
+!----------------------------------
+long_name:  sigma coordinate for layer bounds
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+dimensions:         zlevel
+type:               double
+!----------------------------------
+!
+!
+!============
+variable_entry: a
+!============
+!
+!    Override default argument specifications for cmor_variable
+!------------
+optional: units
+!------------
+!
+! Variable attributes:
+!----------------------------------
+long_name:   hybrid sigma coordinate A coefficient for layer
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+dimensions:         zlevel
+type:               double
+!----------------------------------
+!
+!
+!============
+variable_entry: b
+!============
+!
+!    Override default argument specifications for cmor_variable
+!------------
+optional: units
+!------------
+!
+! Variable attributes:
+!----------------------------------
+long_name:   hybrid sigma coordinate B coefficient for layer
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+dimensions:         zlevel
+type:               double
+!----------------------------------
+!
+!
+!============
+variable_entry: a_bnds
+!============
+!
+!    Override default argument specifications for cmor_variable
+!------------
+optional: units
+!------------
+!
+! Variable attributes:
+!----------------------------------
+long_name:   hybrid sigma coordinate A coefficient for layer bounds
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+dimensions:         zlevel
+type:               double
+!----------------------------------
+!
+!
+!============
+variable_entry: b_bnds
+!============
+!
+!    Override default argument specifications for cmor_variable
+!------------
+optional: units
+!------------
+!
+! Variable attributes:
+!----------------------------------
+long_name:   hybrid sigma coordinate B coefficient for layer bounds
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+dimensions:         zlevel
+type:               double
+!----------------------------------
+!
+!
+!============
+variable_entry: ap
+!============
+!
+! Variable attributes:
+!----------------------------------
+long_name:   alternate hybrid sigma coordinate A coefficient for layer
+units:           Pa
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+dimensions:         zlevel
+type:               double
+!----------------------------------
+!
+!
+!============
+variable_entry: ap_bnds
+!============
+!
+! Variable attributes:
+!----------------------------------
+long_name:   alternate hybrid sigma coordinate A coefficient for layer bounds
+units:           Pa
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+dimensions:         zlevel
+type:               double
+!----------------------------------
+!
+!
+!============
+variable_entry: az
+!============
+!
+!
+! Variable attributes:
+!----------------------------------
+long_name:   hybrid height coordinate A coefficient for layer
+units:           m
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+dimensions:         zlevel
+type:               double
+!----------------------------------
+!
+!
+!============
+variable_entry: bz
+!============
+!
+!    Override default argument specifications for cmor_variable
+!------------
+optional: units
+!------------
+!
+! Variable attributes:
+!----------------------------------
+long_name:   hybrid height coordinate B coefficient for layer
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+dimensions:         zlevel
+type:               double
+!----------------------------------
+!
+!
+!============
+variable_entry: az_bnds
+!============
+!
+! Variable attributes:
+!----------------------------------
+long_name:   hybrid sigma coordinate A coefficient for layer bounds
+units:           m
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+dimensions:         zlevel
+type:               double
+!----------------------------------
+!
+!
+!============
+variable_entry: bz_bnds
+!============
+!
+!    Override default argument specifications for cmor_variable
+!------------
+optional: units
+!------------
+!
+! Variable attributes:
+!----------------------------------
+long_name:   hybrid sigma coordinate B coefficient for layer bounds
+!----------------------------------
+!
+! Additional variable information:
+!----------------------------------
+dimensions:         zlevel
+type:               double
+!----------------------------------
+
+
+! ***************************************************************
+! Atmospheric forcing
+! ***************************************************************
+
+!============
+variable_entry:  hus
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   specific_humidity
+units:           kg kg-1
+cell_methods:    time: mean
+long_name:       Atmospheric specific humidity
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time height1
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  rain
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   rainfall_precipitation_flux
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Rainfall precipitation flux
+comment:         includes all liquid types (rain, large-scale, convective, etc.)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+valid_max:       1.e-3
+ok_min_mean_abs: 1.e-6
+ok_max_mean_abs: 5.e-5
+!----------------------------------
+
+!============
+variable_entry:  snow
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   snowfall_precipitation_flux
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Snowfall precipitation flux
+comment:         includes all frozen types (snow, hail, ice, etc.)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+valid_max:       1.e-3
+ok_min_mean_abs: 1.e-6
+ok_max_mean_abs: 5.e-5
+!----------------------------------
+
+
+! ***************************************************************
+! Biogeochemistry
+! ***************************************************************
+
+!============
+variable_entry:  agnpp
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   above_ground_net_primary_productivity_of_carbon
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Above-ground net primary production
+comment:         Component of net primary production attributable to above-ground biomass
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  ar
+!============
+! Variable attributes:
+!----------------------------------
+!standard_name:   autotrophic_respiration_carbon_flux
+standard_name:   plant_respiration_carbon_flux
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Autotrophic respiration
+comment:         Sum of maintenance respiration and growth respiration of vegetation
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  bgnpp
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   below_ground_net_primary_productivity_of_carbon
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Below-ground net primary production
+comment:         Component of net primary production attributable to below-ground biomass
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  biogenco
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   biogenic_carbon_monoxide_flux
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Total biogenic carbon monoxide flux out of biosphere
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  cwdc
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   coarse_woody_debris_carbon_content
+units:           kg m-2
+cell_methods:    time: mean
+long_name:       Coarse woody debris carbon
+comment:         Total carbon content in the coarse woody debris carbon pool(s)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  cwdc_hr
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   coarse_woody_debris_heterotrophic_respiration_carbon_flux
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Coarse woody debris heterotrophic respiration
+comment:         Carbon flux out of coarse woody debris carbon pool(s) attributable to decomposition of coarse woody debris
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  cwdc_loss
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   total_coarse_woody_debris_carbon_loss
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Coarse woody debris carbon loss
+comment:         Total carbon transfer out of the coarse woody debris carbon pool(s)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  frootc
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   fine_root_carbon_content
+units:           kg m-2
+cell_methods:    time: mean
+long_name:       Fine root carbon
+comment:         Total carbon content in the fine root carbon pool(s)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  frootc_alloc
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   fine_root_allocation_of_carbon
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Fine root carbon allocation
+comment:         Carbon flux into the fine root carbon pool(s) through allocation
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  frootc_loss
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   total_fine_root_carbon_loss
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Fine root carbon loss
+comment:         Total carbon transfer out of the fine root carbon pool(s)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  gpp
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   gross_primary_productivity_of_carbon
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Gross primary production
+comment:         Total assimilation of carbon by the biosphere
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  gross_nmin
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   gross_nitrogen_mineralization
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Gross rate of nitrogen mineralization
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  hr
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   total_heterotrophic_respiration_carbon_flux
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Total heterotrophic respiration
+comment:         Total carbon flux attributable to decomposition of organic matter
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  isoprene
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   isoprene_flux_out_of_biosphere
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Total isoprene flux out of biosphere
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  leafc
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   leaf_carbon_content
+units:           kg m-2
+cell_methods:    time: mean
+long_name:       Leaf carbon
+comment:         Total carbon content in the leaf carbon pool(s)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  leafc_alloc
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   leaf_allocation_of_carbon
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Leaf carbon allocation
+comment:         Carbon flux into the leaf carbon pool(s) through allocation
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  leafc_loss
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   total_leaf_carbon_loss
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Leaf carbon loss
+comment:         Total carbon transfer out of the leaf carbon pool(s)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  litterc
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   litter_carbon_content
+units:           kg m-2
+cell_methods:    time: mean
+long_name:       Litter carbon
+comment:         Total carbon content in the litter carbon pool(s), excluding the coarse woody debris carbon pool(s)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  litterc_hr
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   litter_heterotrophic_respiration_carbon_flux
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Litter heterotrophic respiration
+comment:         Carbon flux out of litter carbon pool(s) attributable to decomposition of litter, excluding coarse woody debris
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  litterc_loss
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   total_litter_carbon_loss
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Litter carbon loss
+comment:         Total carbon transfer out of the litter carbon pool(s), excluding the coarse woody debris carbon pool(s)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  monoterpene
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   monoterpene_flux_out_of_biosphere
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Total monoterpene flux out of biosphere
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  nee
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   net_ecosystem_exchange_of_carbon_out_of_biosphere
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Net ecosystem exchange
+comment:         Sum of all carbon fluxes out of the biosphere; includes gross primary production, ecosystem respiration, and fire
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:     longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  nep
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   net_ecosystem_productivity_of_carbon
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Net ecosystem production
+comment:         Sum of carbon fluxes into the biosphere, excluding fire; includes gross primary production and ecosystem respiration
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  net_nmin
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   net_nitrogen_mineralization
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Net nitrogen mineralization
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  npp
+!============
+!------------
+! Variable attributes:
+!----------------------------------
+standard_name:   net_primary_productivity_of_carbon
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Net primary production
+comment:         Total net primary production from all sources
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+! Some models produce negative NPPs, so do not restrict it to positive values
+!valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  orvoc
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   other_reactive_volatile_organic_compound_flux_out_of_biosphere
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Total of other reactive volatile organic compound flux out of biosphere
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  ovoc
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   other_volatile_organic_compound_flux_out_of_biosphere
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Total of other volatile organic compound flux out of biosphere
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  soilc
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   soil_carbon_content
+units:           kg m-2
+cell_methods:    time: mean
+long_name:       Soil organic matter carbon
+comment:         Total carbon content in the soil carbon pool(s), excluding the coarse woody debris pool(s) and litter carbon pool(s)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  soilc_hr
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   soil_heterotrophic_respiration_carbon_flux
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Soil heterotrophic respiration
+comment:         Carbon flux out of soil carbon pool(s) attributable to decomposition of soil, excluding coarse woody debris and litter
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  soilc_loss
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   total_soil_carbon_loss
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Soil carbon loss
+comment:         Total carbon transfer out of the soil carbon pool(s), excluding the coarse woody debris pool(s) and litter carbon pool(s)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  vocflxt
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   volatile_organic_compound_flux_out_of_biosphere
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Total of all volatile organic compound fluxes out of biosphere
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  woodc
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   wood_carbon_content
+units:           kg m-2
+cell_methods:    time: mean
+long_name:       Wood carbon
+comment:         Total carbon content in the wood carbon pool(s)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  woodc_alloc
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   wood_allocation_of_carbon
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Wood carbon allocation
+comment:         Carbon flux into the wood carbon pool(s) through allocation
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+!============
+variable_entry:  woodc_loss
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   total_wood_carbon_loss
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Wood carbon loss
+comment:         Total carbon transfer out of the wood carbon pool(s)
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.0
+!----------------------------------
+
+
+! ***************************************************************
+! Energy
+! ***************************************************************
+
+!============
+variable_entry:  hfg
+!============
+!------------
+required:        positive
+!------------
+! Variable attributes:
+!----------------------------------
+standard_name:   downward_heat_flux_at_ground_level_in_soil
+units:           W m-2
+cell_methods:    time: mean
+long_name:       Surface heat flux into soil
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+positive:        down
+!----------------------------------
+
+!============
+variable_entry:  hfls
+!============
+!------------
+required:        positive
+!------------
+! Variable attributes:
+!----------------------------------
+standard_name:   surface_upward_latent_heat_flux
+units:           W m-2
+cell_methods:    time: mean
+long_name:       Surface latent heat flux
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+positive:        up
+valid_min:       -120
+valid_max:       900.
+ok_min_mean_abs: 50.
+ok_max_mean_abs: 120.
+!----------------------------------
+
+!============
+variable_entry:  hfss
+!============
+!------------
+required:        positive
+!------------
+! Variable attributes:
+!----------------------------------
+standard_name:   surface_upward_sensible_heat_flux
+units:           W m-2
+cell_methods:    time: mean
+long_name:       Surface sensible heat flux
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+positive:        up
+!----------------------------------
+
+!============
+variable_entry:  hfssg
+!============
+!------------
+required:        positive
+!------------
+! Variable attributes:
+!----------------------------------
+standard_name:   surface_upward_sensible_heat_flux_from_ground
+units:           W m-2
+cell_methods:    time: mean
+long_name:       Surface sensible heat flux from ground
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+positive:        up
+!----------------------------------
+
+!============
+variable_entry:  hfssv
+!============
+!------------
+required:        positive
+!------------
+! Variable attributes:
+!----------------------------------
+standard_name:   surface_upward_sensible_heat_flux_from_vegetation
+units:           W m-2
+cell_methods:    time: mean
+long_name:       Surface sensible heat flux from vegetation
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+positive:        up
+!----------------------------------
+
+
+! ***************************************************************
+! Humidity
+! ***************************************************************
+
+!============
+variable_entry:  hurs
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   relative_humidity
+units:           %
+cell_methods:    time: mean
+long_name:       Surface relative humidity
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time height2
+valid_min:       0.
+valid_max:       100.
+ok_min_mean_abs: 1.
+ok_max_mean_abs: 99.
+!----------------------------------
+
+!============
+variable_entry:  huss
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   surface_specific_humidity
+units:           kg kg-1
+cell_methods:    time: mean
+long_name:       Surface specific humidity
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time height2
+valid_min:       0.0
+!----------------------------------
+
+
+! ***************************************************************
+! Hydrology
+! ***************************************************************
+
+!============
+variable_entry:  btran
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   transpiration_beta_factor
+units:           1
+cell_methods:    time: mean
+long_name:       Transpiration beta factor
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+valid_min:       0.
+valid_max:       1.
+ok_min_mean_abs: 0.1
+ok_max_mean_abs: 0.9
+!----------------------------------
+
+!============
+variable_entry:  evspsblveg
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   water_evaporation_flux_from_canopy
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Evaporation from vegetation canopy
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  mrross
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   subsurface_runoff_flux
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Subsurface drainage
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
+!============
+variable_entry:  et
+!============
+! Variable attributes:
+!----------------------------------
+standard_name:   water_evapotranspiration_flux
+units:           kg m-2 s-1
+cell_methods:    time: mean
+long_name:       Evapotranspiration
+comment:         The total water loss from vegetation due to the combined effects of canopy evaporation and transpiration
+!----------------------------------
+! Additional variable information:
+!----------------------------------
+dimensions:      longitude latitude time
+!----------------------------------
+
